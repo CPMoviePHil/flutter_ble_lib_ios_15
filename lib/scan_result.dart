@@ -59,7 +59,7 @@ class AdvertisementData {
   final Uint8List? manufacturerData;
 
   /// A dictionary that contains service-specific advertisement data.
-  final Map<String, Uint8List>? serviceData;
+  final Map<String, dynamic>? serviceData;
 
   /// A list of service UUIDs.
   final List<String>? serviceUuids;
@@ -88,10 +88,10 @@ class AdvertisementData {
             json[_ScanResultMetadata.solicitedServiceUuids]
           );
 
-  static Map<String, Uint8List>? _getServiceDataOrNull(
+  static Map<String, dynamic>? _getServiceDataOrNull(
       Map<String, dynamic>? serviceData) {
     return serviceData?.map(
-      (key, value) => MapEntry(key, base64Decode(value)),
+      (key, value) => MapEntry(key, value),
     );
   }
 
